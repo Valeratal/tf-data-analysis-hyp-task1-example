@@ -4,7 +4,6 @@ import numpy as np
 
 chat_id = 252926140 # Ваш chat ID, не меняйте название переменной
 
-import scipy.stats as stats
 
 import scipy.stats as st
 
