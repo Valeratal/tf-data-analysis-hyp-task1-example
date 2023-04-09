@@ -6,13 +6,13 @@ chat_id = 252926140 # Ваш chat ID, не меняйте название пе�
 
 import scipy.stats as stats
 
+import scipy.stats as st
+
 def solution(x_success: int, x_cnt: int, y_success: int, y_cnt: int) -> bool:
-    # Calculate the expected number of successful calls in the test sample under the null hypothesis
-    p = x_cnt / y_cnt
-    expected_success = y_cnt * p
-
-    # Calculate the p-value for the hypothesis test
-    p_value = 1 - stats.binom.cdf(x_success - 1, y_cnt, p)
-
-    # Compare the p-value to the significance level and return the decision
-    return p_value < 0.06 and x_success > expected_success
+  p_control = x_success / x_cnt
+  p_test = y_success / y_cnt
+  p_pool = (x_success + y_success) / (x_cnt + y_cnt)
+  se = np.sqrt(p_pool * (1 - p_pool) * (1/x_cnt + 1/y_cnt))
+  z_score = (p_test - p_control) / se
+  p_value = st.norm.sf(abs(z_score))
+  return p_value < 0.06
