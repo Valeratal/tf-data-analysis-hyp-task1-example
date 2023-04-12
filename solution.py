@@ -14,7 +14,7 @@ def solution(x_success: int,
              y_success: int, 
              y_cnt: int) -> bool:
   
-    alpha=0.02
+    alpha=0.06
     
     p_value=proportions_ztest([x_success, y_success], [x_cnt, y_cnt])[1] / 2
     
